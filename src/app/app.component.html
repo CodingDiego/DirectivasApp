@@ -1,9 +1,9 @@
-<h1 style="text-align: center;">{{title}}</h1>
+<h1>{{title}}</h1>
 
 <form>
-  <input type="text" name="nombre"><br/>
+  <input type="text" name="nombre" [(ngModel)]="nombre"><br/>
 
-  <input type="text" name="apellido"><br/>
+  <input type="text" name="apellido" [(ngModel)]="apellido"><br/>
 
   <input type="submit" name="" id="" value="Registrarse" (click)="registrarUsuario()">
 
@@ -11,5 +11,20 @@
 
 <br/>
 
-<p *ngIf="registrado">{{mensaje}}</p>
+<p *ngIf="registrado; else sinRegistrar">{{mensaje}}</p>
+
+<ng-template #sinRegistrar >
+  <p>No hay nadie registrado</p>
+
+  </ng-template>
+
+  <br><br/>
+
+  <ul>
+
+    <li *ngFor="let entrada of entradas; let i = index"><span>{{entrada.titulo}}</span>
+    . Entrada {{i+1}}
+    </li>
+    
+  </ul>
 
